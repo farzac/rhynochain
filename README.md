@@ -1,92 +1,34 @@
-# Meat Trade
-This is a network and application sample that demonstrate the use of Go and Node.js chaincodes.
-Using Fabric-SDK-Go, a REST API for integration of external applications is provided and also a Web Application that consumes such API.
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-## Scenario
+## Hyperledger Rhynochain
 
-The explored scenario is a marketplace of beef cattle. The consortium is composed by:
-* 2 farms (*farm1* and *farm2*);
-* 1 slaughterhouse (*slaughterhouse*);
-* 2 inspection agencies (*inspection1* and *inspection2*);
-* 1 supermarket (*supermarket1*).
+Please visit the [installation instructions](http://hyperledger-fabric.readthedocs.io/en/latest/install.html)
+to ensure you have the correct prerequisites installed. Please use the
+version of the documentation that matches the version of the software you
+intend to use to ensure alignment.
 
-In total there are 6 organizations plus an orderer service using SOLO consensus. Each organization, in turn, has two peers (*peer0* and *peer1*). All participants communicate through the same channel (*kingbeefcattlechannel*).
+## Download Binaries and Docker Images
 
-In a real simplified scenario, farmers are responsible for cattle raising and fattening, and subsequent sale to the slaughterhouse. The slaughterhouse split the cattle in different pieces (carcases) which are then sold to the supermarket.
+The [`scripts/bootstrap.sh`](https://github.com/hyperledger/fabric-samples/blob/release-1.3/scripts/bootstrap.sh)
+script will preload all of the requisite docker
+images for Hyperledger Fabric and tag them with the 'latest' tag. Optionally,
+specify a version for fabric, fabric-ca and thirdparty images. Default versions
+are 1.4.0, 1.4.0 and 0.4.14 respectively.
 
-This way this sample provides chaincodes to represent two transactions: from farmes to the slaughterhouse; and from the slaughterhouse to the supermarket.
-Chaincodes also provide methods to use private data, hidding the whole transaction from unauthorized parties. 
-
-## Requirements and setup
-
-This sample works with version 1.2.0 of Fabric.
-
-The following softwares must be installed before proceeding:
-* [Docker](https://www.docker.com/get-started) version 18.06.0 or higher
-* [Docker Compose](https://docs.docker.com/compose/install/) version 1.22.0 or higher
-* [Go](https://golang.org/dl/) version 1.10.0 or higher
-* [Node.js](https://nodejs.org/en/download/) version 8.11.x
-* NPM version 5.6.0
-* cURL version 7.54.0 (to download binaries)
-
-In addition there must be downloaded some Fabric binaries to generate crypto material, channel settings and the genesis block. 
-
-To download the required binaries, execute:
-```
-./bootstrap.sh
+```bash
+./scripts/bootstrap.sh [version] [ca version] [thirdparty_version]
 ```
 
-By the end this script will create a `bin` folder in this level.
-## For the impatient
+### Continuous Integration
 
-To start everything for the example, execute the following script and access the application at http://localhost:8080 using your favorite browser.
-```
-./runAll.sh
-```
+Please have a look at [Continuous Integration Process](docs/fabric-samples-ci.md)
 
-To stop everything, execute:
-```
-./stopAll.sh
-```
-The next sections will explain all steps in detail.
-## Creating and launching the network
+## License <a name="license"></a>
 
-1. Navigate to `network` folder.
-2. To generate the crypto material of all network participants, run ``./generate.sh``.
-3. To launch the containers, run ``./up.sh``.
-4. To create the channel, run ``./createChannel.sh``.
-5. To join the participants, run ``./joinChannel.sh``.
-6. To update anchor peers, run ``./updateAnchors.sh``.
-
-**Optional commands**:
-  * To stop the network, run ``./down.sh``
-  * **To stop the network, remove all containers, volumes and images, run `./cleanup.sh`.
-  * To restart the network, run ``./restart.sh`` (this script will run `./down.sh` and `./up.sh` sequentially).
-
-** If you have other images you don't want to remove be careful running `cleanup.sh` script.
-
-## Chaincode
-
-To install **Farm** chaincode follow the instructions in [README.md](chaincode/farm/README.md).
-
-To install **Slaughterhouse** chaincode follow the instructions in [README.md](chaincode/slaughterhouse/README.md).
-
-## Middleware
-In order to start the middleware follow the instructions described in [Middleware README.md](middleware/README.md).
-
-## Run Web application
-
-To start the Web application and perform operations on the ledger follow the instructions described in [Web App README.md](web-application/README.md).
-
-
-
-
-
-
-
-
-
-
+Hyperledger Project source code files are made available under the Apache
+License, Version 2.0 (Apache-2.0), located in the [LICENSE](LICENSE) file.
+Hyperledger Project documentation files are made available under the Creative
+Commons Attribution 4.0 International License (CC-BY-4.0), available at http://creativecommons.org/licenses/by/4.0/.
 
 
 
