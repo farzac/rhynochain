@@ -9,12 +9,14 @@
     "scripts": {
         "lint": "eslint .",
         "pretest": "npm run lint",
-        "test": "nyc mocha --recursive"
+        "test": "nyc mocha --recursive",
+        "start": "node ../../bin/www"
     },
     "engineStrict": true,
     "author": "Hyperledger",
     "license": "Apache-2.0",
     "dependencies": {
+        "express": "^4.17.0",
         "fabric-ca-client": "~1.4.0",
         "fabric-network": "~1.4.0"
     },
